@@ -4,7 +4,7 @@ import (
 	"log"
 	"os"
 
-	pb "github.com/EwanValentine/shippy-user-service/proto/user"
+	pb "github.com/mikedutuandu/shippy-user-service/proto/auth"
 	micro "github.com/micro/go-micro"
 	microclient "github.com/micro/go-micro/client"
 	"golang.org/x/net/context"
@@ -14,14 +14,14 @@ func main() {
 
 	srv := micro.NewService(
 
-		micro.Name("go.micro.srv.user-cli"),
+		micro.Name("shippy.auth.cli"),
 		micro.Version("latest"),
 	)
 
 	// Init will parse the command line flags.
 	srv.Init()
 
-	client := pb.NewUserServiceClient("go.micro.srv.user", microclient.DefaultClient)
+	client := pb.NewAuthService("shippy.auth", microclient.DefaultClient)
 
 	name := "Ewan Valentine"
 	email := "ewan.valentine89@gmail.com"
